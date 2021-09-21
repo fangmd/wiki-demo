@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .text {
+            font-size: 20px;
+        }
+
+        .btn1 {
+            background: #bae8e8;
+        }
+    </style>
+
+    <style>
+        .mask {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.2);
+            width: 100vw;
+            height: 100vh;
+            z-index: 100;
+        }
+
+        .dialog {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 110;
+            background: #fff;
+        }
+
+        .dialog .title {
+            height: 40px;
+            line-height: 40px;
+            width: 300px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .dialog .content {
+            height: 40px;
+            line-height: 40px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .dialog .btn-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .dialog .btn-wrapper .cancel {
+            height: 40px;
+            line-height: 40px;
+            width: 80px;
+            text-align: center;
+        }
+
+        .dialog .btn-wrapper .confirm {
+            box-sizing: border-box;
+            height: 40px;
+            width: 80px;
+            line-height: 40px;
+            text-align: center;
+            margin-left: 60px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <button class="btn1">Show Dialog</button>
+
+    <div class="text">长文本：RGBA color values are an extension of RGB color values with an alpha channel - which specifies
+        the
+        opacity for a color.
+        An RGBA color value is specified with: rgba(red, green, blue, alpha). The alpha parameter is a number between
+        0.0 (fully transparent) and 1.0 (fully opaque).RGBA color values are an extension of RGB color values with an
+        alpha channel - which specifies the
+        opacity for a color.
+        An RGBA color value is specified with: rgba(red, green, blue, alpha). The alpha parameter is a number between
+        0.0 (fully transparent) and 1.0 (fully opaque).RGBA color values are an extension of RGB color values with an
+        alpha channel - which specifies the
+        <button class="btn1">Show Dialog</button>
+        An RGBA color value is specified with: rgba(red, green, blue, alpha). The alpha parameter is a number between
+        0.0 (fully transparent) and 1.0 (fully opaque).RGBA color values are an extension of RGB color values with an
+        alpha channel - which specifies the
+        opacity for a color.
+        <button class="btn1">Show Dialog</button>
+        An RGBA color value is specified with: rgba(red, green, blue, alpha). The alpha parameter is a number between
+        0.0 (fully transparent) and 1.0 (fully opaque).RGBA color values are an extension of RGB color values with an
+        alpha channel - which specifies the
+        opacity for a color.
+        An RGBA color value is specified with: rgba(red, green, blue, alpha). The alpha parameter is a number between
+        0.0 (fully transparent) and 1.0 (fully opaque).RGBA color values are an extension of RGB color values with an
+        alpha channel - which specifies the
+        An RGBA color value is specified with: rgba(red, green, blue, alpha). The alpha parameter is a number between
+        0.0 (fully transparent) and 1.0 (fully opaque).RGBA color values are an extension of RGB color values with an
+        alpha channel - which specifies the
+        opacity for a color.
+        An RGBA color value is specified with: rgba(red, green, blue, alpha). The alpha parameter is a number between
+        0.0 (fully transparent) and 1.0 (fully opaque).RGBA color values are an extension of RGB color values with an
+        alpha channel - which specifies the
+        opacity for a color.
+        An RGBA color value is specified with: rgba(red, green, blue, alpha). The alpha parameter is a number between
+        0.0 (fully transparent) and 1.0 (fully opaque).
+    </div>
+
+    <button class="btn1">Show Dialog</button>
+
+    <div class="mask"></div>
+    <div class="dialog">
+        <div class="title">提示</div>
+        <div class="content">退出登录？</div>
+        <div class="btn-wrapper">
+            <div class="cancel">取消</div>
+            <div class="confirm">确定</div>
+        </div>
+    </div>
+
+    <script>
+        function hideDialog() {
+            console.log('hideDialog');
+            document.body.style.overflow = 'auto';
+            document.body.style.height = '100%';
+            document.querySelector('.mask').style.display = 'none';
+            document.querySelector('.dialog').style.display = 'none';
+        }
+        function showDialog() {
+            console.log('showDialog');
+            document.querySelector('.mask').style.display = 'block';
+            document.querySelector('.dialog').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        for (var i of document.querySelectorAll('.btn1')) {
+            i.addEventListener('click', showDialog)
+        }
+
+        // mask
+        // document.querySelector('.mask').addEventListener('click', () => {
+        //     console.log('cancel');
+        //     hideDialog()
+        // })
+        document.querySelector('.cancel').addEventListener('click', () => {
+            console.log('cancel');
+            hideDialog()
+        })
+        document.querySelector('.confirm').addEventListener('click', (event) => {
+            console.log('confirm');
+            hideDialog()
+        })
+    </script>
+
+</body>
+
+</html>
