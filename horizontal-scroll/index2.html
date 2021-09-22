@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>横向滚动Demo</title>
+
+    <style>
+        .h-scroll-container {
+            display: flex;
+            /* width: 100vw; */
+            overflow: scroll;
+            flex-direction: row-reverse;
+        }
+
+        /* 隐藏滚动条 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+            /* Chrome Safari */
+        }
+
+        .hide-scrollbar {
+            scrollbar-width: none;
+            /* firefox */
+            -ms-overflow-style: none;
+            /* IE 10+ */
+        }
+
+        .item {
+            /* 重要，避免 item 受到 flex 影响，被压缩 */
+            flex: none;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 20px;
+            padding: 0 10px;
+            background: rgb(192, 222, 135);
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const domContainer = document.querySelector('#app');
+
+        const App = () => {
+            const [data, setData] = React.useState(['红烧肉', '肉夹馍'])
+
+            const addItem = () => {
+                console.log('add item');
+                data.unshift(`${data.length}`)
+                setData([...data])
+            }
+
+            return (
+                <div>
+                    <button onClick={addItem}>Add Item</button>
+                    <div className='h-scroll-container hide-scrollbar'>
+                        {
+                            data && data.map((i, index) => {
+                                return <div className="item" key={index}>{i}</div>
+                            })
+                        }
+                    </div>
+                </div>
+            )
+        }
+
+        ReactDOM.render(React.createElement(App), domContainer);
+    </script>
+
+</body>
+
+</html>
